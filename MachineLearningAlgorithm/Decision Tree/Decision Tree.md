@@ -10,7 +10,7 @@
 
 以西瓜问题为例，**决策树是基于树形结构来进行决策的**，要对“是否是好瓜”进行决策，我们通常会进行一系列的“子决策”，从色泽、根蒂和敲声进行判断，进而得出最终决策。
 
-![西瓜问题的一颗决策树](S:\GDUT\Freshman\Freshman summer vacation study\QG Studio\Training\Phase 1\7.16-7.22\MachineLearningAlgorithm\Decision Tree\Decision Tree.assets\西瓜问题的一颗决策树-1595073316678.png)
+![西瓜问题的一颗决策树.png](https://github.com/Giyn/QGSummerTraining/blob/master/Pictures/Decision%20Tree/%E8%A5%BF%E7%93%9C%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%80%E9%A2%97%E5%86%B3%E7%AD%96%E6%A0%91.png?raw=true)
 
 **一般地，一棵决策树可以分成三个部分：一个根结点、若干个内部结点和若干个叶结点。**叶结点对应于决策结果，其他每个结点则对应于一个属性测试；每个结点包含的样本集合根据属性测试的结果被划分到子结点中；根结点包含样本全集。从根结点到每个叶结点的路径对应了一个判定测试序列。
 
@@ -18,7 +18,7 @@
 
 决策树学习的目的是为了产生一棵泛化能力强，即处理未见示例能力强的决策树。且决策树的生成是一个递归过程，其遵循简单且直观的“分而治之”（divide-and-conquer）策略：
 
-![决策树学习基本算法](S:\GDUT\Freshman\Freshman summer vacation study\QG Studio\Training\Phase 1\7.16-7.22\MachineLearningAlgorithm\Decision Tree\Decision Tree.assets\决策树学习基本算法-1595073322249.png)
+![决策树学习基本算法.png](https://github.com/Giyn/QGSummerTraining/blob/master/Pictures/Decision%20Tree/%E5%86%B3%E7%AD%96%E6%A0%91%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95.png?raw=true)
 
 
 
@@ -197,7 +197,7 @@ $$
 
 若把每个属性视为坐标空间中的一个坐标轴，则 $d$ 个属性描述的样本就对应了 $d$ 维空间中的一个数据点；对样本分类则意味着在这个坐标空间中寻找不同类样本之间的分类边界。决策树所形成的分类边界有一个明显的特点：轴平行，即它的分类边界由若干个与坐标轴平行的分段组成。
 
-![决策树对应的分类边界](S:\GDUT\Freshman\Freshman summer vacation study\QG Studio\Training\Phase 1\7.16-7.22\MachineLearningAlgorithm\Decision Tree\Decision Tree.assets\决策树对应的分类边界-1595073337890.png)
+![决策树对应的分类边界.png](https://github.com/Giyn/QGSummerTraining/blob/master/Pictures/Decision%20Tree/%E5%86%B3%E7%AD%96%E6%A0%91%E5%AF%B9%E5%BA%94%E7%9A%84%E5%88%86%E7%B1%BB%E8%BE%B9%E7%95%8C.png?raw=true)
 
 前面提到的决策树都是单变量决策树， 即在每个节点处做判定时都只用到一个属性。它有一个特点，就是形成的分类边界都是轴平行的。显然，这样的分类边界使得学习结果有较好的可解释性，因为每一段划分都直接对应了某个属性取值。
 
@@ -205,7 +205,7 @@ $$
 
 “多变量决策树”就是能实现这样的“斜划分”甚至更复杂划分的决策树。以实现斜划分的多变量决策树为例，在此类决策树中，非叶结点不再是仅对某个属性，而是对属性的线性组合进行测试；换言之，每个非叶结点是一个形如 $\sum^d_{i=1}w_ia_i=t$ 的线性分类器，其中 $w_i$ 是属性 $a_i$ 的权重，$w_i$ 和 $t$ 可在该结点所含的样本集和属性集上学得。于是，与传统的“单变量决策树”不同，**在多变量决策树的学习过程中，不是为每个非叶结点寻找一个最优划分属性，而是试图建立一个合适的线性分类器。**
 
-![决策树对复杂分类边界的分段近似](S:\GDUT\Freshman\Freshman summer vacation study\QG Studio\Training\Phase 1\7.16-7.22\MachineLearningAlgorithm\Decision Tree\Decision Tree.assets\决策树对复杂分类边界的分段近似-1595073344018.png)
+![决策树对复杂分类边界的分段近似.png](https://github.com/Giyn/QGSummerTraining/blob/master/Pictures/Decision%20Tree/%E5%86%B3%E7%AD%96%E6%A0%91%E5%AF%B9%E5%A4%8D%E6%9D%82%E5%88%86%E7%B1%BB%E8%BE%B9%E7%95%8C%E7%9A%84%E5%88%86%E6%AE%B5%E8%BF%91%E4%BC%BC.png?raw=true)
 
 
 

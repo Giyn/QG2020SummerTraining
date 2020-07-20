@@ -232,3 +232,6 @@ from sklearn Decision Trees summary:
 - 不支持非线性逻辑，例如XOR；
 - 数据不平衡时生成的树形差；
 
+---
+
+Reference：《机器学习》

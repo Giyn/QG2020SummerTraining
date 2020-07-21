@@ -136,8 +136,7 @@ def adaBoostTrainDS(dataArr, classLabels, numIt = 40):
 		aggErrors = np.multiply(np.sign(aggClassEst) != np.mat(classLabels).T, np.ones((m,1))) 	#计算误差
 		errorRate = aggErrors.sum() / m
 		# print("total error: ", errorRate)
-		if errorRate == 0.0:
-            break # 误差为0，退出循环
+		if errorRate == 0.0: break # 误差为0，退出循环
 	return weakClassArr, aggClassEst
 
 

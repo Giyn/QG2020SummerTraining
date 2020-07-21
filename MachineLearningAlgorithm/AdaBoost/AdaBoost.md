@@ -10,7 +10,7 @@
 
 ​	集成也可包含不同类型的个体学习器，例如同时包含决策树和神经网络，这样的集成是“异质”的(heterogenous)。异质集成中的个体学习器由不同的学习算法生成，这时就不再有基学习算法；相应的，个体学习器一般不称为基学习器，常称为“组件学习器”(component learner)或直接称为个体学习器。
 
-![集成学习示意图](S:\GDUT\Freshman\Freshman summer vacation study\QG Studio\Training\MachineLearningAlgorithm\AdaBoost\AdaBoost.assets\集成学习示意图.png)
+![集成学习示意图.png](https://github.com/Giyn/QGSummerTraining/blob/master/Pictures/AdaBoost/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0%E7%A4%BA%E6%84%8F%E5%9B%BE.png?raw=true)
 
 ​	集成学习通过将多个学习器进行结合，常可获得比单一学习器显著优越的泛化性能。这对“弱学习器”(weak learner)尤为明显，因此集成学习的很多理论研究都是针对弱学习器进行的，而基学习器有时也被直接称为弱学习器。但需注意的是，虽然从理论上来说使用弱学习器集成足以获得好的性能，但在实践中出于种种考虑，例如希望使用较少的个体学习器，或是重用关于常见学习器的一些经验等，人们往往会使用比较强的学习器。
 
@@ -24,7 +24,7 @@
 
 >个体学习器至少不差于弱学习器。
 
-![集成个体应“好而不同”(h_i表示第i个分类器)](S:\GDUT\Freshman\Freshman summer vacation study\QG Studio\Training\Pictures\AdaBoost\集成个体应"好而不同"(h_i表示第i个分类器).png)
+![集成个体应“好而不同”(h_i表示第i个分类器).png](https://github.com/Giyn/QGSummerTraining/blob/master/Pictures/AdaBoost/%E9%9B%86%E6%88%90%E4%B8%AA%E4%BD%93%E5%BA%94%E2%80%9C%E5%A5%BD%E8%80%8C%E4%B8%8D%E5%90%8C%E2%80%9D(h_i%E8%A1%A8%E7%A4%BA%E7%AC%ACi%E4%B8%AA%E5%88%86%E7%B1%BB%E5%99%A8).png?raw=true)
 
 ​	我们来做个简单的分析。考虑二分类问题 $y∈\{-1,+1\}$ 和真实函数 $f$，假定基分类器的错误率为 $\epsilon$，即对每个基分类器 $h_i$ 有
 $$
@@ -54,7 +54,9 @@ $$
 ​	$Boosting$ 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练出一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的训练样本在后续受到更多关注，然后基于调整后的样本分布来训练下一个基学习器；如此重复进行，直至基学习器数目达到事先指定的值 $T$，最终将这 $T$ 个基学习器进行加权结合。
 ​	$Boosting$ 族算法最著名的代表是 $AdaBoost$，其描述如下图所示，其中 $y_i∈\{-1,+1\}$，$f$ 是真实函数。
 
-![AdaBoost算法](S:\GDUT\Freshman\Freshman summer vacation study\QG Studio\Training\MachineLearningAlgorithm\AdaBoost\AdaBoost.assets\AdaBoost算法-1595314994647.png)
+![AdaBoost算法.png](https://github.com/Giyn/QGSummerTraining/blob/master/Pictures/AdaBoost/AdaBoost%E7%AE%97%E6%B3%95.png?raw=true)
+
+
 
 ### $AdaBoost$
 

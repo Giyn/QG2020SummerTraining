@@ -1,18 +1,14 @@
-# -*-coding:utf-8 -*-
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jul 21 23:52:38 2020
+
+@author: 许继元
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
 
-"""
-Author:
-	Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Zhihu:
-    https://www.zhihu.com/people/Jack--Cui/
-Modify:
-	2017-10-11
-"""
 
 def loadDataSet(fileName):
 	numFeat = len((open(fileName).readline().split('\t')))
@@ -28,10 +24,11 @@ def loadDataSet(fileName):
 
 	return dataMat, labelMat
 
+
 def stumpClassify(dataMatrix,dimen,threshVal,threshIneq):
 	"""
 	单层决策树分类函数
-	Parameters:
+	Args:
 		dataMatrix - 数据矩阵
 		dimen - 第dimen列，也就是第几个特征
 		threshVal - 阈值
@@ -50,7 +47,7 @@ def stumpClassify(dataMatrix,dimen,threshVal,threshIneq):
 def buildStump(dataArr,classLabels,D):
 	"""
 	找到数据集上最佳的单层决策树
-	Parameters:
+	Args:
 		dataArr - 数据矩阵
 		classLabels - 数据标签
 		D - 样本权重
@@ -82,10 +79,11 @@ def buildStump(dataArr,classLabels,D):
 					bestStump['ineq'] = inequal
 	return bestStump, minError, bestClasEst
 
+
 def adaBoostTrainDS(dataArr, classLabels, numIt = 40):
 	"""
 	使用AdaBoost算法训练分类器
-	Parameters:
+	Args:
 		dataArr - 数据矩阵
 		classLabels - 数据标签
 		numIt - 最大迭代次数
@@ -120,7 +118,7 @@ def adaBoostTrainDS(dataArr, classLabels, numIt = 40):
 def plotROC(predStrengths, classLabels):
 	"""
 	绘制ROC
-	Parameters:
+	Args:
 		predStrengths - 分类器的预测强度
 		classLabels - 类别
 	Returns:

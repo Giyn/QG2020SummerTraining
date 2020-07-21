@@ -1,26 +1,22 @@
-# -*-coding:utf-8 -*-
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jul 21 23:52:38 2020
+
+@author: 许继元
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 
-"""
-Author:
-	Jack Cui
-Blog:
-    http://blog.csdn.net/c406495762
-Zhihu:
-    https://www.zhihu.com/people/Jack--Cui/
-Modify:
-	2017-10-10
-"""
 
 def loadSimpData():
 	"""
 	创建单层决策树的数据集
-	Parameters:
+	Args:
 	    无
 	Returns:
-	    dataMat - 数据矩阵
-	    classLabels - 数据标签
+	    dataMat: 数据矩阵
+	    classLabels: 数据标签
 	"""
 	datMat = np.matrix([[ 1. ,  2.1],
 	    [ 1.5,  1.6],
@@ -30,12 +26,13 @@ def loadSimpData():
 	classLabels = [1.0, 1.0, -1.0, -1.0, 1.0]
 	return datMat,classLabels
 
+
 def showDataSet(dataMat, labelMat):
 	"""
 	数据可视化
-	Parameters:
-	    dataMat - 数据矩阵
-	    labelMat - 数据标签
+	Args:
+	    dataMat: 数据矩阵
+	    labelMat: 数据标签
 	Returns:
 		无
 	"""
@@ -52,16 +49,17 @@ def showDataSet(dataMat, labelMat):
 	plt.scatter(np.transpose(data_minus_np)[0], np.transpose(data_minus_np)[1]) 	#负样本散点图
 	plt.show()
 
+
 def stumpClassify(dataMatrix,dimen,threshVal,threshIneq):
 	"""
 	单层决策树分类函数
-	Parameters:
-		dataMatrix - 数据矩阵
-		dimen - 第dimen列，也就是第几个特征
-		threshVal - 阈值
-		threshIneq - 标志
+	Args:
+		dataMatrix: 数据矩阵
+		dimen: 第dimen列，也就是第几个特征
+		threshVal: 阈值
+		threshIneq: 标志
 	Returns:
-		retArray - 分类结果
+		retArray: 分类结果
 	"""
 	retArray = np.ones((np.shape(dataMatrix)[0],1))				#初始化retArray为1
 	if threshIneq == 'lt':
@@ -69,12 +67,12 @@ def stumpClassify(dataMatrix,dimen,threshVal,threshIneq):
 	else:
 		retArray[dataMatrix[:,dimen] > threshVal] = -1.0 		#如果大于阈值,则赋值为-1
 	return retArray
-    
+
 
 def buildStump(dataArr,classLabels,D):
 	"""
 	找到数据集上最佳的单层决策树
-	Parameters:
+	Args:
 		dataArr - 数据矩阵
 		classLabels - 数据标签
 		D - 样本权重
@@ -106,10 +104,11 @@ def buildStump(dataArr,classLabels,D):
 					bestStump['ineq'] = inequal
 	return bestStump, minError, bestClasEst
 
+
 def adaBoostTrainDS(dataArr, classLabels, numIt = 40):
 	"""
 	使用AdaBoost算法提升弱分类器性能
-	Parameters:
+	Args:
 		dataArr - 数据矩阵
 		classLabels - 数据标签
 		numIt - 最大迭代次数
@@ -144,7 +143,7 @@ def adaBoostTrainDS(dataArr, classLabels, numIt = 40):
 def adaClassify(datToClass,classifierArr):
 	"""
 	AdaBoost分类函数
-	Parameters:
+	Args:
 		datToClass - 待分类样例
 		classifierArr - 训练好的分类器
 	Returns:

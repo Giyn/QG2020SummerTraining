@@ -211,7 +211,7 @@ $$
 
 # 决策树算法的优劣
 
-from sklearn Decision Trees summary:
+from sklearn Decision Trees summary：
 
 ##### 优势：
 

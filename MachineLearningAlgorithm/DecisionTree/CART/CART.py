@@ -186,28 +186,6 @@ class DecisionTree(object):
         return best_feature_name, best_gini
 
 
-    def choose_best_feature_infogain(self, X, y):
-        '''
-        以返回值中 best_info_gain 的长度来判断当前特征是否为连续值，若长度为 1 则为离散值，若长度为 2 ，则为连续值
-        :param X: 当前所有特征的数据 pd.DaraFrame 格式
-        :param y: 标签值
-        :return: 以信息增益来选择的最佳划分属性，第一个返回值为属性名称，
-
-        '''
-        features = X.columns
-        best_feature_name = None
-        best_info_gain = [float('-inf')]
-        entD = self.entroy(y)
-        for feature_name in features:
-            is_continuous = type_of_target(X[feature_name]) == 'continuous'
-            info_gain = self.info_gain(X[feature_name], y, entD, is_continuous)
-            if info_gain[0] > best_info_gain[0]:
-                best_feature_name = feature_name
-                best_info_gain = info_gain
-
-        return best_feature_name, best_info_gain
-
-
     def choose_best_feature_gainratio(self, X, y):
         '''
         以返回值中 best_gain_ratio 的长度来判断当前特征是否为连续值，若长度为 1 则为离散值，若长度为 2 ，则为连续值
@@ -270,43 +248,6 @@ class DecisionTree(object):
         p = pd.value_counts(y) / y.shape[0]
         gini = 1 - np.sum(p ** 2)
         return gini
-
-
-    def info_gain(self, feature, y, entD, is_continuous=False):
-        '''
-        计算信息增益
-        :param feature: 当前特征下所有样本值
-        :param y: 对应标签值
-        :return: 当前特征的信息增益, list类型，若当前特征为离散值则只有一个元素为信息增益，若为连续值，则第一个元素为信息增益，第二个元素为切分点
-        '''
-        m = y.shape[0]
-        unique_value = pd.unique(feature)
-        if is_continuous:
-            unique_value.sort() # 排序, 用于建立分割点
-            split_point_set = [(unique_value[i] + unique_value[i + 1]) / 2 for i in range(len(unique_value) - 1)]
-            min_ent = float('inf') # 挑选信息熵最小的分割点
-            min_ent_point = None
-            for split_point_ in split_point_set:
-
-                Dv1 = y[feature <= split_point_]
-                Dv2 = y[feature > split_point_]
-                feature_ent_ = Dv1.shape[0] / m * self.entroy(Dv1) + Dv2.shape[0] / m * self.entroy(Dv2)
-
-                if feature_ent_ < min_ent:
-                    min_ent = feature_ent_
-                    min_ent_point = split_point_
-            gain = entD - min_ent
-
-            return [gain, min_ent_point]
-
-        else:
-            feature_ent = 0
-            for value in unique_value:
-                Dv = y[feature == value] # 当前特征中取值为 value 的样本，即书中的 D^{v}
-                feature_ent += Dv.shape[0] / m * self.entroy(Dv)
-
-            gain = entD - feature_ent
-            return [gain]
 
 
     def info_gainRatio(self, feature, y, entD, is_continuous=False):

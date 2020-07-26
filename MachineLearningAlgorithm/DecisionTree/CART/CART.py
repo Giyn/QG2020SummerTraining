@@ -303,4 +303,4 @@ if __name__ == '__main__':
     tree.fit(X, y, X_val, y_val)
 
     print("平均准确率为:", np.mean(tree.predict(X_val) == y_val))
-    # treePlotter.create_plot(tree.tree_)
+    treePlotter.create_plot(tree.tree_)

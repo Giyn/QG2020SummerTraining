@@ -2,7 +2,7 @@
 """
 Created on Thu Jul 23 11:57:25 2020
 
-@author: 许继元
+@author: Giyn
 """
 
 import numpy as np
@@ -45,7 +45,6 @@ class DecisionTree(object):
         :param y:
         :return:
         '''
-
         if self.pruning is not None and (X_val is None or y_val is None):
             raise Exception('you must input X_val and y_val if you are going to pruning')
 
@@ -263,7 +262,6 @@ class DecisionTree(object):
             # 修正原因是因为：当离散属性和连续属性并存时，C4.5算法倾向于选择连续特征做最佳树分裂点
             # 信息增益修正中，N的值，网上有些资料认为是“可能分裂点的个数”，也有的是“当前特征的取值个数”，这里采用“当前特征的取值个数”。
             # 这样 (N-1)的值，就是去重后的“分裂点的个数” , 即在info_gain函数中，split_point_set的长度。
-
             gain, split_point = self.info_gain(feature, y, entD, is_continuous)
             p1 = np.sum(feature <= split_point) / feature.shape[0] # 小于或划分点的样本占比
             p2 = 1 - p1 # 大于划分点样本占比

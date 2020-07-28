@@ -2,10 +2,11 @@
 """
 Created on Thu Jul 23 11:57:25 2020
 
-@author: 许继元
+@author: Giyn
 """
 
 from matplotlib import pyplot as plt
+
 
 decision_node = dict(boxstyle='round,pad=0.3', fc='#FAEBD7')
 leaf_node = dict(boxstyle='round,pad=0.3', fc='#F4A460')

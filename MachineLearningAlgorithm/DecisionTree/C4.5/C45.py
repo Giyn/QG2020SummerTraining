@@ -110,11 +110,13 @@ class C45(object):
         maxInd = freq.index(max(freq))
         return self.classes[maxInd]
 
+
     def allSameClass(self, data):
         for row in data:
             if row[-1] != data[0][-1]:
                 return False
         return data[0][-1]
+
 
     def isAttrDiscrete(self, attribute):
         if attribute not in self.attributes:

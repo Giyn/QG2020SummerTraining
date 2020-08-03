@@ -1,1 +1,1 @@
-# QGSummerTraining
+# QG2020SummerTraining

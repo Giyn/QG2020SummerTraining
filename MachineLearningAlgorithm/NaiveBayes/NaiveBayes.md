@@ -115,6 +115,22 @@ $$
 
 ​		为避开这个障碍，朴素贝叶斯分类器 (naive Bayes classifer) 采用了“属性条件独立性假设” (attribute conditional independence assimption)：对已知类别，假设所有属性相互独立。换言之，假设每个属性独立地对分类结果发生影响。
 
+
+
+### $NavieBayes$ 算法流程：
+
+1. 导入数据集，确定特征属性；
+
+2. 对每个类别计算 $P(y_i)$；
+
+3. 对每个特征属性计算所有划分的条件概率；
+
+4. 对每个类别计算 $P(x\mid y_i)P(y_i)$；
+
+5. 以 $$P(x\mid y_i)P(y_i)$$ 最大项作为 $x$ 所属类别；
+
+
+
 ​		基于属性条件独立性假设，式 (8) 可重写为
 $$
 P(c\mid x)=\frac{P(c)P(x\mid c)}{P(x)}=\frac{P(c)}{P(x)}\prod^d_{i=1}P(x_i\mid c)\,\,,\tag{14}

@@ -204,7 +204,7 @@ $$
 
 ​		最直接的做法是假设所有属性都依赖于同一个属性，称为“超父”(super-parent)，然后通过交叉验证等模型选择方法来确定超父属性，由此形成了 SPODE (Super-Parent ODE) 方法。例如，在下图(b)中，$x_1$ 是超父属性。
 
-![朴素贝叶斯与两种半朴素贝叶斯分类器所考虑的属性依赖关系](../../Pictures/NaiveBayes/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%B8%8E%E4%B8%A4%E7%A7%8D%E5%8D%8A%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8%E6%89%80%E8%80%83%E8%99%91%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB.png)
+![朴素贝叶斯与两种半朴素贝叶斯分类器所考虑的属性依赖关系.png](https://github.com/Giyn/QG2020SummerTraining/blob/master/Pictures/NaiveBayes/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%B8%8E%E4%B8%A4%E7%A7%8D%E5%8D%8A%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8%E6%89%80%E8%80%83%E8%99%91%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB.png?raw=true)
 
 ​		TAN​ (Tree Augmented naive Bayes) 则是在最大带权生成树 (maximum weighted spanning tree) 算法的基础上，通过以下步骤将属性间依赖关系约简为如上图 (c) 所示的树形结构：
 
@@ -263,7 +263,7 @@ P_B(x_1,x_2,...,x_d)=\prod^d_{i=1}P_B(x_i\mid\pi_i)=\prod^d_{i=1}\theta_{x_i\mid
 $$
 ​		下图显示出贝叶斯网中三个变量之间的典型依赖关系，其中前两种在式 (26) 中已有所体现。
 
-![贝叶斯网中三个变量之间的典型依赖关系](../../Pictures/NaiveBayes/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E4%B8%AD%E4%B8%89%E4%B8%AA%E5%8F%98%E9%87%8F%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B8%E5%9E%8B%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB.png)
+![贝叶斯网中三个变量之间的典型依赖关系.png](https://github.com/Giyn/QG2020SummerTraining/blob/master/Pictures/NaiveBayes/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E4%B8%AD%E4%B8%89%E4%B8%AA%E5%8F%98%E9%87%8F%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B8%E5%9E%8B%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB.png?raw=true)
 
 ​		在“同父” (common parent) 结构中，给定父结点 $x_1$ 的取值，则 $x_3$ 与 $x_4$ 条件独立。在“顺序”结构中，给定 $x$ 的值，则 $y$ 与 $z$ 条件独立。V 型结构 (V-structure) 亦称“冲撞”结构，给定子结点 $x_4$ 的取值，$x_1$ 与 $x_2$ 必不独立；奇妙的是，若 $x_4$ 的取值完全未知，则 V 型结构下 $x_1$ 与 $x_2$ 却是相互独立的。我们做一个简单的验证：
 $$
@@ -348,7 +348,7 @@ $$
 $$
 P(Q=q\mid E=e)\simeq\frac{n_q}{T}\,\,.\tag{33}
 $$
-![吉布斯采样算法](../../Pictures/NaiveBayes/%E5%90%89%E5%B8%83%E6%96%AF%E9%87%87%E6%A0%B7%E7%AE%97%E6%B3%95.png)
+![吉布斯采样算法.png](https://github.com/Giyn/QG2020SummerTraining/blob/master/Pictures/NaiveBayes/%E5%90%89%E5%B8%83%E6%96%AF%E9%87%87%E6%A0%B7%E7%AE%97%E6%B3%95.png?raw=true)
 
 ​		实质上，吉布斯采样是在贝叶斯网所有变量的联合状态空间与证据 $E= e$ 一致的子空间中进行“随机漫步” (random walk)。每一步仅依赖于前一步的状态，这是一个“马尔可夫链” (Markov chain)。在一定条件下，无论从什么初始状态开始，马尔可夫链第 $t$ 步的状态分布在 $t→∞$ 时必收敛于一个平稳分布 (stationary distribution)；对于吉布斯采样来说，这个分布恰好是 $P(Q\mid E=e)$。因此，在T很大时，吉布斯采样相当于根据 $P(Q\mid E=e)$ 采样，从而保证了式 (33) 收敛于 $P(Q=q\mid E=e)$。
 
@@ -403,18 +403,3 @@ $$
 ---
 
 Reference：《机器学习》
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

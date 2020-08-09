@@ -220,7 +220,7 @@ def classifyPerson():
 	
     filename = "datingTestSet.txt" # 文件路径
     datingDataMat, datingLabels = file2matrix(filename) # 导入并处理数据
-	showdatas(datingDataMat, datingLabels) # 可视化数据
+    showdatas(datingDataMat, datingLabels) # 可视化数据
 
     normMat, ranges, minVals = autoNorm(datingDataMat) # 训练集归一化
     inArr = np.array([ffMiles, precentTats, iceCream]) # 生成NumPy数组,测试集
